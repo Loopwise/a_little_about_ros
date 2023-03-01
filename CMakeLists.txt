@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(A_Little_About_ROS)
+project(a_little_about_ROS)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -206,8 +206,16 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(turtlesim_lemniscata src/turtlesim_lemniscata.cpp)
+# Velocidad en coordenadas cartesianas - polares
+add_executable(turtlesim_lemniscata src/topics02_motion/turtlesim/polar/turtlesim_lemniscata.cpp)
 target_link_libraries(turtlesim_lemniscata ${catkin_LIBRARIES})
 
-add_executable(turtlesim_four_petal_rose src/turtlesim_four_petal_rose.cpp)
+add_executable(turtlesim_four_petal_rose src/topics02_motion/turtlesim/polar/turtlesim_four_petal_rose.cpp)
 target_link_libraries(turtlesim_four_petal_rose ${catkin_LIBRARIES})
+
+# Velocidad empleando circunferencia osculatriz
+add_executable(turtlesim_lemniscata_circ src/topics02_motion/turtlesim/circ/turtlesim_lemniscata_circ.cpp)
+target_link_libraries(turtlesim_lemniscata_circ ${catkin_LIBRARIES})
+
+add_executable(turtlesim_four_petal_rose_circ src/topics02_motion/turtlesim/circ/turtlesim_four_petal_rose_circ.cpp)
+target_link_libraries(turtlesim_four_petal_rose_circ ${catkin_LIBRARIES})

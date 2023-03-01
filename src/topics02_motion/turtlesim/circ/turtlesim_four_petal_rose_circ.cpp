@@ -3,13 +3,12 @@
 #include <cmath>
 
 // Global Variables
-const int freq = 10; // Frecuencia de Publicación (Hz)
+const int freq = 100; // Frecuencia de Publicación (Hz)
 const double dt = 1.0/freq; // Paso del tiempo (s)
-const double a = 2; // Tamaño del lazo
-const double w = 2*M_PI*dt; // Frecuencia angular
+const double a = 3; // Tamaño del lazo
+const double w = 2*M_PI/10; // Velocidad angular del w*t
 
-
-// Function Definition
+// Function Definitions
 inline double r(float t){
     return a * sin(2*w*t);
 }
@@ -22,8 +21,22 @@ inline double Y(float t){
     return r(t) * sin(w*t);
 }
 
+// First numerical derivative
 inline double d_dt(double f(float), float t, float dt){
-    return (f(t + dt) - f(t) )/ dt;
+	return (f(t + dt) - f(t - dt) )/ (2*dt);
+}
+
+// Second numerical derivative
+inline double d2_dt2(double f(float), float t, float dt){
+    return (f(t + dt) - 2*f(t) + f(t - dt) )/ pow(dt, 2);
+}
+
+// Ratio of the curvature
+inline double R(double t){
+    double num = pow(d_dt(X, t, dt), 2) + pow(d_dt(Y, t, dt), 2);
+    double den = d_dt(X, t, dt)*d2_dt2(Y, t, dt) - d_dt(Y, t, dt)*d2_dt2(X, t, dt);
+
+    return pow(num, 1.5)/den;
 }
 
 int main(int argc, char **argv){
@@ -41,14 +54,21 @@ int main(int argc, char **argv){
     double t = 0; // Variable de tiempo
 
     while (ros::ok()){
+        // Cálculo de la velocidad necesaria para seguir la lemniscata
+        // Derivada de la posición con respecto al tiempo
         double vx = d_dt(X, t, dt);
         double vy = d_dt(Y, t, dt);
 
+        double radio = R(t);
+
+        double v = sqrt(pow(vx, 2) + pow(vy, 2));
+
+        double v_theta = v/radio;
+
         // Creación del mensaje de velocidad
         geometry_msgs::Twist msg;
-        msg.linear.x = vx;
-        msg.linear.y = vy;
-        msg.angular.z = 0;
+        msg.linear.x = v;
+        msg.angular.z = v_theta;
 
         // Publicación del mensaje
         pub.publish(msg);
