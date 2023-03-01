@@ -3,21 +3,27 @@
 #include <cmath>
 
 // Global Variables
-const double a = 2; // Tamaño del lazo
-const double b = 1; // Factor de escala
 const int freq = 10; // Frecuencia de Publicación (Hz)
 const double dt = 1.0/freq; // Paso del tiempo (s)
+const double a = 2; // Tamaño del lazo
+const double w = 2*M_PI*dt; // Frecuencia angular
+
+
+// Function Definition
+inline double r(float t){
+    return a * sin(2*w*t);
+}
 
 inline double X(float t){
-	return a * b * cos(t) / (1 + pow(sin(t), 2));
+    return r(t) * cos(w*t);
 }
 
 inline double Y(float t){
-	return a * b * cos(t) * sin(t) / (1 + pow(sin(t), 2));
+    return r(t) * sin(w*t);
 }
 
 inline double d_dt(double f(float), float t, float dt){
-	return (f(t + dt) - f(t) )/ dt;
+    return (f(t + dt) - f(t) )/ dt;
 }
 
 int main(int argc, char **argv){
@@ -35,8 +41,6 @@ int main(int argc, char **argv){
     double t = 0; // Variable de tiempo
 
     while (ros::ok()){
-        // Cálculo de la velocidad necesaria para seguir la lemniscata
-        // Derivada de la posición con respecto al tiempo
         double vx = d_dt(X, t, dt);
         double vy = d_dt(Y, t, dt);
 

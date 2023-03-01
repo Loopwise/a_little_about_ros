@@ -209,3 +209,5 @@ include_directories(
 add_executable(turtlesim_lemniscata src/turtlesim_lemniscata.cpp)
 target_link_libraries(turtlesim_lemniscata ${catkin_LIBRARIES})
 
+add_executable(turtlesim_four_petal_rose src/turtlesim_four_petal_rose.cpp)
+target_link_libraries(turtlesim_four_petal_rose ${catkin_LIBRARIES})
