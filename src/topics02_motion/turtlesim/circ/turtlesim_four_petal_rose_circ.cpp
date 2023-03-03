@@ -3,22 +3,22 @@
 #include <cmath>
 
 // Global Variables
-const int freq = 100; // Frecuencia de Publicación (Hz)
+const int freq = 500; // Frecuencia de Publicación (Hz)
 const double dt = 1.0/freq; // Paso del tiempo (s)
 const double a = 3; // Tamaño del lazo
 const double w = 2*M_PI/10; // Velocidad angular del w*t
 
 // Function Definitions
 inline double r(float t){
-    return a * sin(2*w*t);
+    return a * sin(2*w*t); // 2*theta = w*t
 }
 
 inline double X(float t){
-    return r(t) * cos(w*t);
+    return r(t) * cos(w*t); // cos(theta) = cos(w*t)
 }
 
 inline double Y(float t){
-    return r(t) * sin(w*t);
+    return r(t) * sin(w*t); // sin(theta) = sin(w*t)
 }
 
 // First numerical derivative

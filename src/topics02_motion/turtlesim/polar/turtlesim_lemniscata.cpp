@@ -17,7 +17,7 @@ inline double Y(float t){
 }
 
 inline double d_dt(double f(float), float t, float dt){
-	return (f(t + dt) - f(t) )/ dt;
+	return (f(t + dt) - f(t - dt) )/ (2*dt);
 }
 
 int main(int argc, char **argv){
