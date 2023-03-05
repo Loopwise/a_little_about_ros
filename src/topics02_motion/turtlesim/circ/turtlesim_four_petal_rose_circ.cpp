@@ -41,7 +41,7 @@ inline double R(double t){
 
 int main(int argc, char **argv){
     // Inicialización del nodo
-    ros::init(argc, argv, "turtle_lemniscate");
+    ros::init(argc, argv, "turtle_four_petal_rose_circ");
     ros::NodeHandle node; // Creamos el objeto nodo (necesario para crear publishers, subscribers, etc.)
 
     // Creamos el objeto publisher de velocidad en base a un nodo (necesario para publicar mensajes)

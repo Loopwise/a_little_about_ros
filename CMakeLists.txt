@@ -206,16 +206,23 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+#
+# Topics 02: Motion
+#
+
 # Velocidad en coordenadas cartesianas - polares
-add_executable(turtlesim_lemniscata src/topics02_motion/turtlesim/polar/turtlesim_lemniscata.cpp)
+add_executable(turtlesim_lemniscata src/topics02_motion/turtlesim/polar/turtlesim_lemniscate.cpp)
 target_link_libraries(turtlesim_lemniscata ${catkin_LIBRARIES})
 
 add_executable(turtlesim_four_petal_rose src/topics02_motion/turtlesim/polar/turtlesim_four_petal_rose.cpp)
 target_link_libraries(turtlesim_four_petal_rose ${catkin_LIBRARIES})
 
 # Velocidad empleando circunferencia osculatriz
-add_executable(turtlesim_lemniscata_circ src/topics02_motion/turtlesim/circ/turtlesim_lemniscata_circ.cpp)
+add_executable(turtlesim_lemniscata_circ src/topics02_motion/turtlesim/circ/turtlesim_lemniscate_circ.cpp)
 target_link_libraries(turtlesim_lemniscata_circ ${catkin_LIBRARIES})
 
 add_executable(turtlesim_four_petal_rose_circ src/topics02_motion/turtlesim/circ/turtlesim_four_petal_rose_circ.cpp)
 target_link_libraries(turtlesim_four_petal_rose_circ ${catkin_LIBRARIES})
+
+add_executable(turtlesim_goal_to_goal src/topics02_motion/turtlesim/goal_to_goal/turtlesim_goal_to_goal.cpp)
+target_link_libraries(turtlesim_goal_to_goal ${catkin_LIBRARIES})
