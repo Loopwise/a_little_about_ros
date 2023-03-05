@@ -211,15 +211,15 @@ include_directories(
 #
 
 # Velocidad en coordenadas cartesianas - polares
-add_executable(turtlesim_lemniscata src/topics02_motion/turtlesim/polar/turtlesim_lemniscate.cpp)
-target_link_libraries(turtlesim_lemniscata ${catkin_LIBRARIES})
+add_executable(turtlesim_lemniscate src/topics02_motion/turtlesim/polar/turtlesim_lemniscate.cpp)
+target_link_libraries(turtlesim_lemniscate ${catkin_LIBRARIES})
 
 add_executable(turtlesim_four_petal_rose src/topics02_motion/turtlesim/polar/turtlesim_four_petal_rose.cpp)
 target_link_libraries(turtlesim_four_petal_rose ${catkin_LIBRARIES})
 
 # Velocidad empleando circunferencia osculatriz
-add_executable(turtlesim_lemniscata_circ src/topics02_motion/turtlesim/circ/turtlesim_lemniscate_circ.cpp)
-target_link_libraries(turtlesim_lemniscata_circ ${catkin_LIBRARIES})
+add_executable(turtlesim_lemniscate_circ src/topics02_motion/turtlesim/circ/turtlesim_lemniscate_circ.cpp)
+target_link_libraries(turtlesim_lemniscate_circ ${catkin_LIBRARIES})
 
 add_executable(turtlesim_four_petal_rose_circ src/topics02_motion/turtlesim/circ/turtlesim_four_petal_rose_circ.cpp)
 target_link_libraries(turtlesim_four_petal_rose_circ ${catkin_LIBRARIES})
