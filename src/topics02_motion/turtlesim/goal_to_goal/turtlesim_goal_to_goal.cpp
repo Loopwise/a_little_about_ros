@@ -3,42 +3,45 @@
 #include <turtlesim/Pose.h>
 #include <cmath>
 
-void move_turtle(ros::Publisher publisher, float goal_x, float goal_y)
-{
-    ros::Rate rate(10); // 10 Hz
-    while (ros::ok())
-    {
+using namespace std;
+
+const int freq = 10; // 10 Hz
+const float tol = 0.1; // Tolerancia
+const float P_v = 1.5; // Proportional Control Linear Velocity
+const float P_w = 4; // Proportional Control Angular Velocity
+
+void move_turtle(ros::Publisher publisher, float goal_x, float goal_y){
+    ros::Rate rate(freq);
+    while (ros::ok()){
         // Suscribirse a la posición actual de la tortuga
         turtlesim::PoseConstPtr pose = ros::topic::waitForMessage<turtlesim::Pose>("/turtle1/pose");
 
         // Calcular la distancia a la posición objetivo
-        float distance = std::sqrt(std::pow(goal_x - pose->x, 2) + std::pow(goal_y - pose->y, 2));
+        float distance = sqrt(pow(goal_x - (pose -> x), 2) + pow(goal_y - (pose -> y), 2));
 
-        // Si la distancia es menor que 0.1, entonces la tortuga llegó a su destino
-        if (distance < 0.1){
+        if (distance < tol)
             break;
-        }
 
         // Calcular el ángulo hacia el objetivo
-        float angle = std::atan2(goal_y - pose->y, goal_x - pose->x);
+        float angle = atan2(goal_y - (pose -> y), goal_x - (pose -> x));
 
         // Publicar un mensaje Twist para mover la tortuga hacia el objetivo
         geometry_msgs::Twist msg;
-        msg.linear.x = 0.5 * distance;
-        msg.angular.z = 4 * (angle - pose->theta);
+        msg.linear.x = P_v* distance;
+        msg.angular.z = P_w * (angle - pose->theta);
         publisher.publish(msg);
 
         rate.sleep();
     }
 }
 
-int main(int argc, char **argv)
-{
-    ros::init(argc, argv, "move_turtle");
+int main(int argc, char **argv){
+    ros::init(argc, argv, "Turtle_goal_to_goal");
     ros::NodeHandle node_handle;
-    ros::Publisher publisher = node_handle.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 10);
+    ros::Publisher vel_pub = node_handle.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 10);
 
-    move_turtle(publisher, 5, 5); // Mover la tortuga hacia la posición (5, 5)
+    float X = 3, Y = 3;
+    move_turtle(vel_pub, X, Y); // Mover la tortuga hacia la posición (5, 5)
 
     return 0;
 }

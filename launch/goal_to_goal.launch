@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+    <node pkg="a_little_about_ROS" name="Turtle_goal_to_goal" type="turtlesim_goal_to_goal"/>
+</launch>
