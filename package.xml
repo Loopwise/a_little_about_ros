@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>a_little_about_ROS</name>
+  <name>a_little_about_ros</name>
   <version>0.0.0</version>
   <description>The A_Little_About_ROS package</description>
 
