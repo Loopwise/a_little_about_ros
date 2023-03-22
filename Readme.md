@@ -18,3 +18,9 @@ Para verificar la instalación, ejecutamos en una terminal:
 gazebo
 ```
 El cual debería corrernos fácilmente a 60 fps.
+
+## Adicional
+Para programar ROS en Python deberíamos instalar el siguiente paquete:
+```
+sudo apt install python-is-python3
+```
