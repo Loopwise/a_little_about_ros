@@ -10,6 +10,9 @@
 - Realizar ejemplos empleando los nodos del paquete _turtlesim_.
 
 ---
+## Next
+- [ROS Nodes](01_Basics.md)
+
 ## ROS Installation
 Los pasos se encuentran el _Readme.md_ del repositorio.
 
@@ -46,18 +49,17 @@ catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
 !["ROS Workspace Structure"](images/ROS_Ws_Structure.png)
 
 ---
-
+## Setup
+Antes de dar paso a esto, ejecutaremos en una terminal por comando los siguientes:
+```bash
+roscore # Comando para iniciar el ROS Computation Graph
+rosrun turtlesim turtlesim_node # Comando para iniciar el nodo turtlesim
+```
 ## ROS Nodes
 Básicamente un nodo es un programa escrito en C++ o Python que hemos creado en nuestro ROS Package. Se recomienda que cada nodo tenga una única responsabilidad, por ejemplo, en el caso de un robot, un nodo puede ser el encargado de la navegación, otro de la visión, movimiento de motores, lectura de datos de sensores, etc.  
 El nodo puede actuar como un _publisher_, _subscriber_, _service server_ o _service client_ (e inclusive una combinación de estos).  
 Los nodos se comunican entre sí a través de _topics_ y _services_.  
 __De forma técnica__: Son los procesos que dan forma al ROS Computation Graph. Ahora, ¿Qué es **ROS Computation Graph**?  
-Antes de dar paso a esto, ejecutaremos en una terminal por comando los siguientes:
-```bash
-roscore
-rosrun turtlesim turtlesim_node
-rosrun turtlesim turtle_teleop_key
-```
 ### ROS Computation Graph
 Es una *red peer-to-peer* de procesos de ROS que procesan data juntos. Para esta sesión estará compuesto de: _nodes, Master, topics & messages._
 

@@ -7,6 +7,13 @@
 - Conocimientos en Git, C++ y Python. (Mínimo, indispensable)
 - Conocimientos en ROS. (No es tan necesario, pero si no sabes nada, te vas a perder un poco en este tutorial)
 - Inglés intermedio o un buen traductor :v ([Deepl](https://www.deepl.com/es/translator))
+
+## Contents:
+00. [Installation and Configuration](src/content/00_Installation.md)
+01. [ROS Basics](src/content/01_Basics.md)
+02. [ROS Motion](src/content/02_Motion.md)
+03. [ROS Serial](src/content/03_Serial.md)
+
 ## Instalando ROS Noetic
 Debido a problemas haremos uso de dos guías:
 1. [Configuración del repositorio: Pasos del 1 al 3.](https://linuxopsys.com/topics/install-ros-noetic-on-ubuntu)
