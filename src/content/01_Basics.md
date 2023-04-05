@@ -100,4 +100,4 @@ Nos toca aprender sobre lo que hemos venido mencionando hace ya un buen rato: lo
 ## ROS Publisher
 Parte de código
 ## ROS Subscriber
-Parte de códigoa
+Parte de código
